@@ -1,0 +1,63 @@
+<div class="container">
+  <h1 class="firstWord">Creative<span class="secondWord">Banking</span></h1>
+  <hr />
+  <h4 class=" alert-default text-end" ><b>John</b> your balance is:{{ currentAmount }}</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Make a transaction</h3>
+        </div>
+        <div class="panel-body">
+          <form [formGroup]="newTaskForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" 
+                formControlName="name" 
+                class="form-control ng-pristine ng-untouched ng-valid"
+                id="description">
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+                </div>
+                <input type="text" 
+                  formControlName="amount" 
+                  class="form-control" 
+                  id="inlineFormInputGroupUsername"
+                  placeholder="Amount">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Card Type</label>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="select">
+                <option>Debit</option>
+                <option>Credit</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">SAVE</button>
+          </form>
+        </div>
+      </div>
+      <hr />
+      <p>
+        <strong>Transactions Statement</strong>
+      </p>
+      <table>
+        <tr>
+          <th>
+             Description</th>
+          <th> Amount</th>
+          <th>Type</th>
+
+        </tr>
+        <tr *ngFor="let row of formValue">
+          <td> {{row.name}} </td>
+          <td> {{row.amount}} </td>
+          <td> {{row.select}} </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
